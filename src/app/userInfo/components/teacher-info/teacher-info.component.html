@@ -1,0 +1,46 @@
+<div class="inner-sidenav-content">
+  <div class="p-b-0">
+    <div fxLayout="row" fxLayoutAlign="start center" class="teacher-info-div flex-full">
+      <mat-card class="teacher-info-card flex-full">
+        <mat-toolbar color="primary">
+          <span>{{'USER_INFO.TEACHER_INFO.CARD_TITLE' | translate:lang}}</span>
+        </mat-toolbar>
+        <mat-card-content>
+          <mat-nav-list #teachers>
+            <mat-list-item *ngFor="let teacher of teacherList" (click)="selectedTeacher = teacher">
+              <img class="profile-icon-dark" onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+                matListAvatar [src]="getImgUrl(teacher?.profilePic)" alt="teacher?.firstName">
+              <h3 matLine>
+                <strong>{{teacher?.firstName}} {{teacher?.lastName}}</strong>
+              </h3>
+              <p matLine>
+                <span fxLayout="row" fxLayoutAlign="start center">
+                  <i class="material-icons md-18">alternate_email</i>
+                  <span class="font-nor-14-400 m-l-5">{{teacher?.emailId}}</span>
+                </span>
+                <span fxLayout="row" fxLayoutAlign="start center">
+                  <i class="material-icons md-18">phone</i>
+                  <span class="font-nor-14-400 m-l-5">{{teacher?.phoneNo}}</span>
+                </span>
+              </p>
+              <span class="spacer"></span>
+              <button mat-icon-button [matMenuTriggerFor]="teacherOptionMenu" >
+                <mat-icon svgIcon="dots-vertical"></mat-icon>
+              </button>
+              <mat-menu #teacherOptionMenu="matMenu" xPosition="after" yPosition="below">
+                <button mat-menu-item (click)="gotoIndividualTeacherDetails()">
+                  <mat-icon svgIcon="account-edit"></mat-icon>
+                  <span>{{'USER_INFO.TEACHER_INFO.FIRST_SELECTION_MENU' | translate:lang}}</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon svgIcon="map-marker-radius"></mat-icon>
+                  <span>{{'USER_INFO.TEACHER_INFO.SECOND_SELECTION_MENU' | translate:lang}}</span>
+                </button>
+              </mat-menu>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

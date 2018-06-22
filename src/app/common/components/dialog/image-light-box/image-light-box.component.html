@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="img-fullscreen-card">
+    <mat-toolbar [ngClass]="{'bg-primary-light': true}">
+      <!-- <mat-icon *ngIf="svgIconName" svgIcon="{{ svgIconName }}" class="m-r-10"></mat-icon> -->
+      <div class="p-l-0">
+        {{ imgTitle }}
+      </div>
+      <span class="spacer"></span>
+      <button type="button" mat-icon-button (click)="dialogRef.close()">
+        <mat-icon svgIcon="close"></mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-card [ngClass]="{'flex-full': true}" style="padding: 0px;">
+      <img src="{{imgSrc}}" class="font-regular-16 m-l-10 m-r-10 m-t-10 m-b-10" style="max-height: 74vh;" />
+    </mat-card>
+  </div>

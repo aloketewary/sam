@@ -1,0 +1,118 @@
+// Import all the tools needed to customize the theme and extract parts of it
+@import "~@angular/material/theming";
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin bconnect-sidemenu($theme) {
+    // Extract whichever individual palettes you need from the theme.
+    $primary: map-get($theme, primary);
+    $accent: map-get( $theme, accent); // Use mat-color to extract individual colors from a palette as necessary.
+    $warn: map-get($theme, warn);
+    $outer: mat-color($primary, 400);
+    $outer-light: mat-color($primary, 300);
+    .active-link {
+        background-color: mat-color($accent, 500) !important;
+        color: set-text-color(rgba($color: #ffffff, $alpha: 1)) !important;
+        border-bottom: 2px thin mat-color($primary, 600);
+        border-top: 2px thin mat-color($primary, 600);
+    }
+    .col {
+        &-primary {
+            color: mat-color($primary, 500) !important;
+        }
+        &-accent {
+            color: mat-color($accent, 300) !important;
+        }
+    }
+    .bg {
+        &-primary {
+            &-light {
+                background: mat-color($primary, 500) !important;
+                color: #ffffff !important;
+            }
+            &-dark {
+                background: mat-color($primary, 500) !important;
+                color: #000000 !important;
+            }
+        }
+        &-accent {
+            &-light {
+                background: mat-color($accent, A200) !important;
+                color: #ffffff !important;
+            }
+            &-dark {
+                background: mat-color($accent, 300) !important;
+                color: #000000 !important;
+            }
+            &-new {
+                background: mat-color($accent, A100);
+                color: #000000;
+            }
+        }
+        &-warn {
+            background: mat-color($warn, 500) !important;
+            color: #ffffff !important;
+        }
+    }
+    .pagination .pagination-number.current-number {
+        background: mat-color($primary, 500) !important;
+        color: #fff;
+    }
+    #outer .out,
+    .out-sm {
+        .avatar,
+        .message {
+            background-color: $outer;
+            color: white;
+        }
+        .message:before {
+            border-color: $outer transparent transparent transparent;
+        }
+    }
+    .active-chat {
+        background: $outer;
+        color: white;
+        &:hover {
+            background: $outer-light;
+            color: white;
+        }
+    }
+    .error-header {
+        text-align: center;
+        font-size: 15em;
+        font-weight: 100;
+        text-shadow: mat-color($primary, 900) 1px 1px, mat-color($primary, 900) 2px 2px, mat-color($primary, 900) 3px 3px, mat-color($primary, 800) 4px 4px, mat-color($primary, 800) 5px 5px, mat-color($primary, 800) 6px 6px, mat-color($primary, 800) 7px 7px, mat-color($primary, 700) 8px 8px, mat-color($primary, 700) 9px 9px, mat-color($primary, 700) 10px 10px, mat-color($primary, 700) 11px 11px, mat-color($primary, 600) 12px 12px, mat-color($primary, 600) 13px 13px, mat-color($primary, 600) 14px 14px, mat-color($primary, 600) 15px 15px, mat-color($primary, 500) 16px 16px, mat-color($primary, 500) 17px 17px, mat-color($primary, 500) 18px 18px, mat-color($primary, 500) 19px 19px;
+    }
+    .inner-login-sidenav-content {
+        overflow: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: linear-gradient(to bottom, mat-color($primary, 700), mat-color($primary, 900));
+    }
+    .logo-font {
+        color: mat-color($accent, A700);
+        -ms-transform: scale(4, 4);
+        -webkit-transform: scale(4, 4);
+        transform: scale(4, 4);
+    }
+    .my-profile-image {
+        width: 140px;
+        height: 137px;
+        border: 1px solid  mat-color($primary, 800);
+        position: relative;
+        left: 16px;
+        border-radius: 50%;
+    }
+    
+    #lab-camera {
+        border-radius: 12px;
+        font-size: 27px;
+        position: relative;
+        top: 64px;
+        left: -30px;
+        background-color: #ffffff;
+        color: mat-color($accent, A200);
+        cursor: pointer;
+    }
+}

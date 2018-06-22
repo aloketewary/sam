@@ -1,0 +1,133 @@
+<div class="inner-sidenav-content">
+  <div class="p-b-0">
+    <div fxLayout="row" fxLayoutAlign="start center" class="teacher-info-div flex-full">
+      <div fxLayout="row" fxLayoutAlign="start center" class="info-details-div flex-full m-r-10 m-t-10 m-l-10 m-b-10">
+        <mat-card class="info-details-card flex-full">
+          <mat-toolbar color="primary">
+            <button mat-icon-button (click)="goBack()">
+              <mat-icon svgIcon="arrow-left"></mat-icon>
+            </button>
+            <span class="font-nor-20-400-i">{{'USER_INFO.TEACHER_VIEW_EDIT.PROFILE_INFO_OF_USER' | translate:lang:{userFirstName: userProfileFullData.firstName,
+              userLastName: userProfileFullData.lastName} }}</span>
+          </mat-toolbar>
+          <mat-card-content>
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+              <ng-template matStepperIcon="edit">
+                <mat-icon>edit</mat-icon>
+              </ng-template>
+
+              <ng-template matStepperIcon="done">
+                <mat-icon>done</mat-icon>
+              </ng-template>
+
+              <!-- Custom icon with a context variable. -->
+              <ng-template matStepperIcon="number" let-index="index">
+                <mat-icon>{{index == 0? 'person':'bookmark'}}</mat-icon>
+              </ng-template>
+              <mat-step [stepControl]="editViewPersonalForm" class="flex-full">
+                <form [formGroup]="editViewPersonalForm" class="flex-full">
+                  <ng-template matStepLabel>{{'USER_INFO.TEACHER_VIEW_EDIT.PROFILE_INFO' | translate:lang}}</ng-template>
+                  <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+                    <div fxFlex="30%" fxLayoutAlign="center center">
+                      <img [src]="getProfilePicUrl(userProfileFullData.profilePic)" class="my-profile-image" *ngIf="selectedFile == ''">
+                      <img src="{{selectedFile}}" class="my-profile-image" *ngIf="selectedFile !== ''">
+                      <input type="file" id="profile_pic" style="display: none;" (change)="selectFile($event)">
+                      <label id="lab-camera" class="material-icons dp48 label-camera" for="profile_pic">photo_camera</label>
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+                      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                          <div>
+                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                          </div>
+                          <div fxFlex="90%">
+                            <mat-form-field class="input-flex-full">
+                              <input matInput placeholder="First Name" [formControl]="editViewPersonalForm.controls['firstName']" [(ngModel)]="userProfileFullData.firstName"
+                                maxlength="50" required>
+                              <mat-error *ngIf="editViewPersonalForm.controls['firstName'].hasError('required')">
+                                First Name is
+                                <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                          <div>
+                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                          </div>
+                          <div fxFlex="90%">
+                            <mat-form-field class="input-flex-full">
+                              <input matInput placeholder="Last Name" [formControl]="editViewPersonalForm.controls['lastName']" [(ngModel)]="userProfileFullData.lastName"
+                                maxlength="50" required>
+                              <mat-error *ngIf="editViewPersonalForm.controls['lastName'].hasError('required')">
+                                LastName is
+                                <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                          <div>
+                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                          </div>
+                          <div fxFlex="90%">
+                            <mat-form-field class="input-flex-full">
+                              <input matInput placeholder="First Name" [formControl]="editViewPersonalForm.controls['firstName']" [(ngModel)]="userProfileFullData.firstName"
+                                maxlength="50" required>
+                              <mat-error *ngIf="editViewPersonalForm.controls['firstName'].hasError('required')">
+                                First Name is
+                                <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                          <div>
+                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                          </div>
+                          <div fxFlex="90%">
+                            <mat-form-field class="input-flex-full">
+                              <input matInput placeholder="Last Name" [formControl]="editViewPersonalForm.controls['lastName']" [(ngModel)]="userProfileFullData.lastName"
+                                maxlength="50" required>
+                              <mat-error *ngIf="editViewPersonalForm.controls['lastName'].hasError('required')">
+                                LastName is
+                                <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+                    <button mat-raised-button matStepperNext color="primary">{{'COMMON.STEPPER_NEXT' | translate:lang}}</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="secondFormGroup">
+                <form>
+                  <ng-template matStepLabel>Fill out your address</ng-template>
+
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+              </mat-step>
+            </mat-vertical-stepper>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

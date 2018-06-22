@@ -1,0 +1,32 @@
+.custom- {
+    &mat-dialog-container {
+      padding: 0 !important;
+    }
+  }
+  
+  .mat-dialog-container {
+    padding: 0 !important;
+  }
+  
+  @media (max-width: 724px) {
+    .img-fullscreen-card {
+      &-sm {
+        // width: 70vw !important;
+        max-height: 90vh !important;
+        & > .mat-card {
+          padding: 0 !important;
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 725px) {
+    .img-fullscreen-card {
+    //   width: 35vw !important;
+      max-height: 90vh !important;
+      & > .mat-card {
+        padding: 0 !important;
+      }
+    }
+  }
+  

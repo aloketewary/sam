@@ -1,0 +1,39 @@
+<div class="inner-sidenav-content">
+  <div class="p-b-0">
+    <div class="dashboard-info-div" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.lt-lg="space-evenly" fxLayoutAlign="start"
+      fxLayoutWrap>
+      <mat-card [@flipState]="dInfo.flip" (mouseenter)="matElevationAdd($event)" (mouseleave)="matElevationRemove($event)" [ngClass]="{'box':true, 'dashboard-info-card': isMobileView, 'dashboard-info-card-gt-xs': !isMobileView}"
+        *ngFor="let dInfo of dashboardData" (click)="redirectTo(dInfo)" fxFlex="90" fxFlex.gt-xs="46" fxFlex.gt-sm="30" fxFlex.gt-md="23.2">
+        <mat-card-header class="box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="$event.stopPropagation();toggleFlip(dInfo)">
+            <mat-icon svgIcon="dots-vertical"></mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content class="box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div class="icon-gt-xs m-t-20">
+              <mat-icon [svgIcon]="dInfo.icon" class="icon-gt-xs" color="accent"></mat-icon>
+            </div>
+            <div class="content ellipsis">
+              <div class="number-gt-xs ellipsis" [innerHtml]="dInfo.name"></div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-divider> </mat-divider>
+        <mat-card-actions class="p-t--10 p-r-10 p-b-10 p-l-25 box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+          <span [innerHtml]="dInfo.name"></span>
+        </mat-card-actions>
+        <mat-card-header class="box-side box-back" *ngIf="dInfo.flip === 'active'">
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="$event.stopPropagation();toggleFlip(dInfo)">
+            <mat-icon svgIcon="close"></mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content class="box-side box-back m-l-10 m-r-10 m-b-10 m-t-10" *ngIf="dInfo.flip === 'active'">
+          <span class="font-nor-14-500" [innerHtml]="dInfo.info"></span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

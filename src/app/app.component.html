@@ -1,0 +1,96 @@
+<ng-container *ngIf="onlineOffline | async; else elseTemplate">
+  <div class="app-root-style">
+    <mat-sidenav-container #sidenav class="sidenav-root-container">
+      <mat-sidenav *ngIf="gdHandler.isLogin " mode="{{isMobileView?'over':'side'}}" opened="{{!isMobileView}}" disableClose="{{!isMobileView}}"
+        #sidenav class="sidenav-main">
+        <mat-toolbar class="default-theme" color="primary">
+          <div class="p-l-0" fxLayout="column" fxLayoutAlign="center start">
+              <a [routerLink]="gdHandler.rootLogoUrl" class="no-underline cursor-pointer valign-center p-r-20 col-accent">{{gdHandler.userProfile.schoolName}}</a>
+              <span class="font-nor-10-400 m-t--15 col-accent">Year: {{gdHandler.userProfile.schoolYear}}</span>
+          </div>
+        </mat-toolbar>
+        <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" class="p-l-10 p-t-10 p-b-10">
+          <img class="profile-icon-dark" [src]="getUserProfilePic(gdHandler.userProfile.profilePic)" onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+            [alt]="gdHandler.userProfile.firstName">
+          <span class="font-nor-14-500">{{gdHandler.userProfile.firstName}} {{gdHandler.userProfile.lastName}}</span>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="font-nor-12-400 m-t--5 ellipsis">{{gdHandler.userProfile.emailId}}</span>
+            <span class="spacer"></span>
+            <button class="profile-menu" mat-icon-button #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()" [mat-menu-trigger-for]="profile">
+              <mat-icon svgIcon="chevron-down"></mat-icon>
+            </button>
+            <mat-menu #profile="matMenu" yPosition="below">
+              <div *ngIf="gdHandler.isLogin ">
+                <button mat-menu-item routerLink="/myprofile">
+                  <mat-icon>person</mat-icon>
+                  <span>My Profile</span>
+                </button>
+                <button mat-menu-item (click)="logoutDialog()">
+                  <mat-icon>power_settings_new</mat-icon>
+                  <span>Logout</span>
+                </button>
+              </div>
+            </mat-menu>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-nav-list style="overflow-y: auto; height: 71vh;">
+          <div *ngFor="let link of links" [@slideInOut]="menuState">
+            <span *ngIf="link.userRole === gdHandler.currentUserRole">
+              <ng-container *ngIf="link.isChildAvailable; else elseTemplate">
+                <mat-list-item role="link" #links [ngClass]="{'active-link': routeIsActive(link?.href)}" (click)="showHideNavMenu(link)">
+                  <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}"></mat-icon>
+                  <a matLine [matTooltip]="link.name" matTooltipPosition="after"> {{ link.name }}</a>
+                  <mat-icon *ngIf="!link.isShow">add</mat-icon>
+                  <mat-icon *ngIf="link.isShow">remove</mat-icon>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <span *ngIf="link.isShow">
+                  <div *ngFor="let clink of link.child; let last = last;">
+                    <mat-list-item class="p-l-20" role="link" #links routerLinkActive="active-link" routerLink="{{clink.href}}" (click)="onLinkClick()">
+                      <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{clink.icon}}"></mat-icon>
+                      <a matLine [matTooltip]="clink.name" matTooltipPosition="after"> {{ clink.name }}</a>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+                </span>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <mat-list-item role="link" #links routerLinkActive="active-link" routerLink="{{link.href}}" (click)="onLinkClick()">
+                  <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}"></mat-icon>
+                  <a matLine [matTooltip]="link.name" matTooltipPosition="after"> {{ link.name }}</a>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </ng-template>
+            </span>
+          </div>
+        </mat-nav-list>
+      </mat-sidenav>
+      <!--***** html part of page *****-->
+      <div class="my-content" id="header-editor-panel">
+        <mat-toolbar *ngIf="gdHandler.isLogin " class="mat-elevation-z8" color="primary" style="min-height:64px;">
+          <button *ngIf="gdHandler.isLogin  && isMobileView" type="button" mat-icon-button (click)="sidenav.open()">
+            <mat-icon svgIcon="menu"></mat-icon>
+          </button>
+          <span class="spacer"></span>
+          <div class="app-logo">
+            <!-- <img src="../assets/img/scorius-logo.png" alt="Scorius" height="40px">  -->
+          </div>
+          <span class="spacer"></span>
+          <button matTooltip="{{'APP.GOTO_DASHBOARD' | translate:lang}}" matTooltipPosition="before" routerLink="/dashboard" mat-icon-button>
+            <mat-icon svgIcon="view-dashboard"></mat-icon>
+          </button>
+          <!-- <span class="smallSpace"></span>
+          <button matTooltip="Choose Language" matTooltipPosition="before" mat-icon-button>
+            <mat-icon svgIcon="web"></mat-icon>
+          </button> -->
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <ng2-toasty [position]="toastyComponentPosition"></ng2-toasty>
+      </div>
+    </mat-sidenav-container>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <app-no-network></app-no-network>
+</ng-template>

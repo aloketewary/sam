@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="dialog-card">
+  <mat-toolbar [ngClass]="{
+    'bg-light-blue': theme == 'info',
+    'bg-green': theme == 'success',
+    'bg-red': theme == 'error',
+    'bg-orange ': theme == 'warning',
+    'col-white': true
+  }">
+    <mat-icon *ngIf="svgIconName" svgIcon="{{ svgIconName }}" class="m-r-10"></mat-icon>
+    <div class="p-l-0">
+      {{ title }}
+    </div>
+  </mat-toolbar>
+  <mat-card [ngClass]="{'flex-full': true}" style="padding: 0px;">
+    <h3 *ngFor="let msg of messageList" class="font-regular-16 m-l-10 m-r-10 m-t-10 m-b-10"> {{ msg }} </h3>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="m-r-10 m-l-10 m-b-10 m-t-30">
+      <button type="button" *ngIf="!isAlert"  mat-button color="primary" (click)="dialogRef.close()">{{ cancel_button }}</button>
+      <button type="button" mat-button [ngClass]="{
+        'col-light-blue': theme == 'info',
+    'col-green': theme == 'success',
+    'col-red': theme == 'error',
+    'col-orange ': theme == 'warning'
+      }" (click)="dialogRef.close(true)">{{ ok_button }}</button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,43 @@
+{
+    "APP": {
+        "PROJECT_NAME": "School Admin",
+        "ENGLISH": "English",
+        "HINDI": "हिंदी",
+        "CHANGE_LANGUAGE": "भाषा बदलें"
+    },
+    "LOGIN": {
+        "LOGIN_TO_YOUR_ACCOUNT": "अपने खाते में प्रवेश करें",
+        "WELCOME_TO": "आपका स्वागत है {{projectName}} में",
+        "EMAIL": "ईमेल",
+        "ENTER_VALID_MAIL": "मान्य ईमेल आईडी दर्ज करें",
+        "EMAIL_IS": "ईमेल है",
+        "PASSWORD": "पासवर्ड",
+        "PASSWORD_IS": "पासवर्ड है",
+        "LOGIN_BUTTON": "लॉग इन करें",
+        "FORGOT_PASS": "पासवर्ड भूल गए?",
+        "LOGIN_WITH_GOOGLE": "LOGIN WITH GOOGLE",
+        "LOGIN_WITH_FACEBOOK": "LOGIN WITH FACEBOOK",
+        "DONT_HAVE_ACCOUNT": "Don't have an account?",
+        "CREATE_AN_ACCOUNT": "Create an account",
+        "SUCCESSFULLY_AUTHORIZED_WITH_USERNAME": "स्वागत है ",
+        "SUCCESSFULLY_AUTHORIZED": "Login Sucessfull",
+        "RECOVER_YOUR_PASSWORD": "RECOVER YOUR PASSWORD",
+        "SEND_RESET_LINK": "SEND RESET LINK",
+        "BACK_TO_LOGIN_FROM_FORGOTPWD": "लॉगिन करने के लिए वापस जाओ",
+        "FORGOT_SUCCESSFULL_MSG": "ईमेल प्रदान किए गए ईमेल आईडी पर ईमेल भेजा गया है ईमेल में दिए गए चरणों का पालन करें"
+    },
+    "COMMON": {
+        "REQUIRED": "जरुरी",
+        "OR": "OR",
+        "NETWORK_STATUS": "No Network Available",
+        "OK_BUTTON": "OK",
+        "CANCEL_BUTTON": "CANCEL"
+    },
+    "USER_INFO": {
+        "TEACHER_INFO": {
+            "CARD_TITLE": "शिक्षकों की सूची",
+            "FIRST_SELECTION_MENU": "शिक्षक डेटा देखें / संपादित करें",
+            "SECOND_SELECTION_MENU": "परिवहन इतिहास"
+        }
+    }
+}

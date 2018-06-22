@@ -1,0 +1,51 @@
+{
+    "APP": {
+        "PROJECT_NAME": "School Admin",
+        "ENGLISH": "English",
+        "HINDI": "हिंदी",
+        "CHANGE_LANGUAGE": "Change language",
+        "GOTO_DASHBOARD": "Go to Dashboard"
+    },
+    "LOGIN": {
+        "LOGIN_TO_YOUR_ACCOUNT": "LOGIN TO YOUR ACCOUNT",
+        "WELCOME_TO": "Welcome to {{projectName}}",
+        "EMAIL": "Email",
+        "ENTER_VALID_MAIL": "Enter valid email id",
+        "EMAIL_IS": "Email is",
+        "PASSWORD": "Password",
+        "PASSWORD_IS": "Password is",
+        "LOGIN_BUTTON": "LOGIN",
+        "FORGOT_PASS": "Forgot Password?",
+        "LOGIN_WITH_GOOGLE": "LOGIN WITH GOOGLE",
+        "LOGIN_WITH_FACEBOOK": "LOGIN WITH FACEBOOK",
+        "DONT_HAVE_ACCOUNT": "Don't have an account?",
+        "CREATE_AN_ACCOUNT": "Create an account",
+        "SUCCESSFULLY_AUTHORIZED_WITH_USERNAME": "Welcome ",
+        "SUCCESSFULLY_AUTHORIZED": "Login Sucessfull",
+        "RECOVER_YOUR_PASSWORD": "RECOVER YOUR PASSWORD",
+        "SEND_RESET_LINK": "SEND RESET LINK",
+        "BACK_TO_LOGIN_FROM_FORGOTPWD": "Go back to login",
+        "FORGOT_SUCCESSFULL_MSG": "Email is sent to provided email id follow the steps given in the email"
+    },
+    "COMMON": {
+        "REQUIRED": "required",
+        "OR": "OR",
+        "NETWORK_STATUS": "No Network Available",
+        "OK_BUTTON": "OK",
+        "CANCEL_BUTTON": "CANCEL",
+        "STEPPER_NEXT": "NEXT",
+        "STEPPER_PREV": "PREV",
+        "STEPPER_UPDATE": "UPDATE"
+    },
+    "USER_INFO": {
+        "TEACHER_INFO": {
+            "CARD_TITLE": "Teachers List",
+            "FIRST_SELECTION_MENU": "View/Edit Teacher Data",
+            "SECOND_SELECTION_MENU": "Transportation History"
+        },
+        "TEACHER_VIEW_EDIT": {
+            "PROFILE_INFO_OF_USER": "Profile info of {{userFirstName}} {{userLastName}}",
+            "PROFILE_INFO": "Profile info"
+        }
+    }
+}

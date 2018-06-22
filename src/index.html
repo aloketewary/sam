@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>School Admin Web</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link rel="assets/fonts/SourceSanspro-Regular.ttf" href="style.css"> -->
+  <link rel="stylesheet" href="https://unpkg.com/ng2-toasty@4.0.0/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+  <style>
+    .loader {
+      width: 54px;
+      height: 89px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+
+    .drawit {
+      fill: transparent;
+      stroke: #000;
+      stroke-width: 2px;
+      stroke-dasharray: 300;
+      stroke-dashoffset: -300;
+      animation: dash 6s linear .5s infinite alternate;
+    }
+
+    .jobing-j {
+      stroke: #2f99f2;
+      fill: #f5f7f7;
+    }
+
+    /* Keyframes */
+
+    @keyframes dash {
+      0% {
+        stroke-dashoffset: -300;
+      }
+      30% {
+        stroke-dashoffset: 0;
+      }
+      60% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    /* Style Demo */
+
+    .half>.indeterminate {
+      overflow: hidden;
+      max-width: 120px;
+      margin: auto;
+      position: absolute;
+      bottom: 0;
+      top: 40px;
+      left: 0;
+      max-height: 15px;
+      right: 0;
+    }
+
+    .half>.indeterminate:after {
+      content: '';
+      height: 3px;
+      background-color: #2196F3;
+      display: inline-block;
+      width: 100%;
+      -webkit-animation: indeterminate 2s linear infinite;
+      animation: indeterminate 2s linear infinite;
+      position: relative;
+    }
+
+    @-webkit-keyframes indeterminate {
+      0% {
+        width: 20%;
+        left: -50%;
+      }
+      50% {
+        width: 60%;
+        left: 20%;
+      }
+      100% {
+        width: 20%;
+        left: 130%;
+      }
+    }
+
+    @keyframes indeterminate {
+      0% {
+        width: 20%;
+        left: -50%;
+      }
+      50% {
+        width: 60%;
+        left: 20%;
+      }
+      100% {
+        width: 20%;
+        left: 130%;
+      }
+    }
+
+    .half {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <app-root>
+    <div class="half">
+      <div class="loader">
+        <svg version="1.1" id="jobing-j-drawit" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" viewBox="0 0 290.627 290.627" enable-background="new 0 0 54 69" xml:space="preserve">
+          <g>
+            <g>
+              <rect x="42.188" y="56.25" style="fill:#2196F3;" width="159.375" height="206.25" />
+              <path style="fill:#333333;" class="drawit jobing-j" d="M215.626,28.125h-38.363c-1.941-5.442-7.097-9.375-13.2-9.375h-14.062v-4.688
+          C150.001,6.309,143.692,0,135.938,0h-28.125c-7.753,0-14.062,6.309-14.062,14.063v4.688H79.688c-6.103,0-11.259,3.933-13.2,9.375
+          H28.126c-7.753,0-14.063,6.309-14.063,14.063v234.375c0,7.753,6.309,14.063,14.063,14.063h187.5
+          c7.753,0,14.063-6.309,14.063-14.063V42.188C229.689,34.434,223.379,28.125,215.626,28.125z M75.001,32.813
+          c0-2.583,2.105-4.688,4.688-4.688h23.438V14.063c0-2.583,2.105-4.688,4.688-4.688h28.125c2.583,0,4.688,2.105,4.688,4.688v14.063
+          h23.438c2.583,0,4.688,2.105,4.688,4.688v14.063c0,2.583-2.105,4.688-4.688,4.688H79.688c-2.583,0-4.688-2.105-4.688-4.688V32.813
+          H75.001z M220.314,276.563c0,2.587-2.105,4.688-4.688,4.688h-187.5c-2.583,0-4.688-2.1-4.688-4.688V42.188
+          c0-2.583,2.105-4.688,4.688-4.688h37.5v9.375c0,7.753,6.309,14.063,14.063,14.063h84.375c7.753,0,14.063-6.309,14.063-14.063V37.5
+          h37.5c2.583,0,4.688,2.105,4.688,4.688v234.375H220.314z" />
+              <path style="fill:#333333;" d="M173.439,112.5h-46.875v-9.375h14.063V70.313h-37.5v32.813h14.063v9.375H70.313v18.75H56.251
+          v32.813h37.5V131.25H79.688v-9.375h37.5v9.375h-14.063v32.813h37.5V131.25h-14.063v-9.375h37.5v9.375h-14.061v32.813h14.063v9.375
+          h-46.875v18.75h-14.063V225h37.5v-32.813h-14.063v-9.375h46.875v-18.75h14.063V131.25h-14.063V112.5H173.439z M112.501,79.688
+          h18.75V93.75h-18.75V79.688z M84.376,154.688h-18.75v-14.063h18.75V154.688z M131.251,154.688h-18.75v-14.063h18.75V154.688z
+           M131.251,215.625h-18.75v-14.063h18.75V215.625z M178.126,154.688h-18.75v-14.063h18.75V154.688z" />
+              <path style="fill:#333333;" d="M262.501,32.813c-7.753,0-14.063,6.309-14.063,14.063v9.375v9.375V75v9.375v160.134l14.063,42.188
+          l14.063-42.188V84.375V75v-9.375V56.25v-9.375C276.564,39.122,270.254,32.813,262.501,32.813z M259.628,248.438h5.742
+          l-2.869,8.616L259.628,248.438z M267.189,239.063h-9.375V84.375h9.375V239.063z M267.189,75h-9.375v-9.375h9.375V75z
+           M257.814,56.25v-9.375c0-2.583,2.105-4.688,4.688-4.688c2.583,0,4.688,2.105,4.688,4.688v9.375H257.814z" />
+            </g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+        </svg>
+      </div>
+      <div class="indeterminate"></div>
+    </div>
+  </app-root>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en-US"></script>
+  <script>
+    var NGXSTORE_CONFIG = {
+      prefix: 'ngx_',      // default: 'ngx_'
+      clearType: 'prefix', // default: 'prefix'
+      mutateObjects: true, // default: true
+      debugMode: false,    // you can enable debug logs if you ever meet any bug to localize its source
+      cookiesScope: '',    // what you pass here will actually prepend base domain
+      cookiesCheckInterval: 0, // number in ms describing how often cookies should be checked for changes
+      previousPrefix: 'angular2ws_', // you have to set it only if you were using custom prefix in old version ('angular2ws_' is a default value)
+    };
+  </script>
+</body>
+
+</html>

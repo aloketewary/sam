@@ -1,0 +1,31 @@
+.custom- {
+  &mat-dialog-container {
+    padding: 0 !important;
+  }
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+@media (max-width: 724px) {
+  .dialog-card {
+    &-sm {
+      width: 70vw !important;
+      max-height: 65vh !important;
+      & > .mat-card {
+        padding: 0 !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 725px) {
+  .dialog-card {
+    width: 35vw !important;
+    max-height: 65vh !important;
+    & > .mat-card {
+      padding: 0 !important;
+    }
+  }
+}
