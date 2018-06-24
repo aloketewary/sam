@@ -35,7 +35,8 @@
         "CANCEL_BUTTON": "CANCEL",
         "STEPPER_NEXT": "NEXT",
         "STEPPER_PREV": "PREV",
-        "STEPPER_UPDATE": "UPDATE"
+        "STEPPER_UPDATE": "UPDATE",
+        "INVALID": "invalid"
     },
     "USER_INFO": {
         "TEACHER_INFO": {
@@ -45,7 +46,31 @@
         },
         "TEACHER_VIEW_EDIT": {
             "PROFILE_INFO_OF_USER": "Profile info of {{userFirstName}} {{userLastName}}",
-            "PROFILE_INFO": "Profile info"
+            "PROFILE_INFO": "Profile info",
+            "DOB": "DOB",
+            "DOB_IS": "DOB is",
+            "EMAIL_FIELD": "Email",
+            "EMAIL_FIELD_IS": "Email is",
+            "QR_CODE_NOT_GENERATED": "QR code is not generated yet",
+            "QR_CODE": "QR code",
+            "GENDER": "Gender",
+            "GENDER_MALE": "Male",
+            "GENDER_FEMALE": "Female",
+            "MARITAL_STATUS": "Marital Status",
+            "MARITAL_STATUS_SINGLE": "Single",
+            "MARITAL_STATUS_MARRIED": "Married",
+            "PHONE": "Phone",
+            "PHONE_IS": "Phone is",
+            "FIRSTNAME": "First name",
+            "FIRSTNAME_IS": "First name",
+            "LASTNAME": "Last name",
+            "LASTNAME_IS": "Last name is",
+            "JOINING_DATE": "Joining Date",
+            "POSITION": "Position",
+            "DEPARTMENT": "Department",
+            "TRANSPORTATION": "Transportation",
+            "AT_HOME": "At Home",
+            "COMMUNITY_POINT": "Community Point"
         }
     }
 }

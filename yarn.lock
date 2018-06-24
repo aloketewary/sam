@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@agm/core@^1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.3.tgz#6ec7fd8629134c040f68663b14de3b4a60a8a011"
+
 "@angular-devkit/architect@0.6.7":
   version "0.6.7"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.6.7.tgz#ef1182dde3fc97ed20be7f5abe96cbb7d00c30ff"
@@ -475,6 +479,12 @@ angular-l10n@^4.0.0-rc.0:
 angular2-counto@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/angular2-counto/-/angular2-counto-1.2.5.tgz#fb43dc0300513cd9a7f996437e68265a84c0f036"
+
+angularx-qrcode@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/angularx-qrcode/-/angularx-qrcode-1.1.7.tgz#20a42a7f696dcf304a7a54e747ff96937d764bbf"
+  dependencies:
+    qrcodejs2 "0.0.2"
 
 ansi-html@0.0.7:
   version "0.0.7"
@@ -5136,6 +5146,10 @@ qjobs@^1.1.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/qjobs/-/qjobs-1.2.0.tgz#c45e9c61800bd087ef88d7e256423bdd49e5d071"
 
+qrcodejs2@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/qrcodejs2/-/qrcodejs2-0.0.2.tgz#465afe5e39f19facecb932c11f7a186109146ae1"
+
 qs@6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
@@ -6299,6 +6313,10 @@ supports-color@^5.1.0, supports-color@^5.3.0, supports-color@^5.4.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
   dependencies:
     has-flag "^3.0.0"
+
+svg-country-flags@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/svg-country-flags/-/svg-country-flags-1.2.2.tgz#6e685633e0c256e7dc6c0622e524c0e73d9480ba"
 
 symbol-observable@^1.2.0:
   version "1.2.0"

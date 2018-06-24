@@ -99,12 +99,11 @@
     .my-profile-image {
         width: 140px;
         height: 137px;
-        border: 1px solid  mat-color($primary, 800);
+        border: 1px solid mat-color($primary, 800);
         position: relative;
         left: 16px;
         border-radius: 50%;
     }
-    
     #lab-camera {
         border-radius: 12px;
         font-size: 27px;
@@ -114,5 +113,13 @@
         background-color: #ffffff;
         color: mat-color($accent, A200);
         cursor: pointer;
+    }
+    .mat-button-toggle {
+        // background-color: mat-color($primary);
+        color: mat-color($primary);
+    }
+    .mat-button-toggle-checked {
+        background-color: mat-color($accent);
+        color: mat-color($accent, default-contrast);
     }
 }

@@ -29,9 +29,12 @@ export class ViewEditTeacherInfoComponent implements OnInit {
   isEditable: boolean;
   public selectedFiles: FileList;
   public selectedFile = '';
+  maxAllowedDateForDOB = new Date();
+  minAllowedDateForDOB = new Date(1900, 1, 1);
+  map: MapConfig;
 
   constructor(
-    @Inject(CommonAppService) private commonAppService: CommonAppService,
+    @Inject(CommonAppService) public commonAppService: CommonAppService,
     @Inject(GlobalDataHandler) private gdHandler: GlobalDataHandler,
     @Inject(LocalStorageService) private localStorageService: LocalStorageService,
     @Inject(CookiesStorageService) private cookiesStorageService: CookiesStorageService,
@@ -45,6 +48,8 @@ export class ViewEditTeacherInfoComponent implements OnInit {
     this.initialize();
     this.user = new User();
     this.userProfileFullData = new UserProfileFullData();
+    this.map = new MapConfig();
+    this.map.zoom = Constants.MAP_ZOOM_LEVEL;
   }
 
   ngOnInit() {
@@ -74,90 +79,11 @@ export class ViewEditTeacherInfoComponent implements OnInit {
     this.location.back();
   }
 
-  getUserInfoFromServer(emailId: string, schoolId: number) {
+  getUserInfoFromServer(emailId: string, schoolId?: number) {
     this.userInfoService.getUserInfo(emailId, schoolId).subscribe((data) => {
-      this.userProfileFullData = {
-        'lastName': 'supriya',
-        'role': '',
-        'notes': {
-          'transportationCounselor': '',
-          'schoolCounselor': ''
-        },
-        'gender': 'Female',
-        'emailId': 'info@wayofschooling.com',
-        'joiningDate': new Date(),
-        'phoneNo': '(+1)556699885533',
-        'userpermissions': {
-          'teachermodules': {
-            'homework': true,
-            't2t': true,
-            'appointment': true,
-            'login': true,
-            'communication': true,
-            'attendance': true
-          },
-          'adminmodules': {
-            'route': true,
-            'driver': true,
-            'student': true,
-            'fee': true,
-            'channel': true,
-            'appointment': true,
-            'staff': true,
-            'login': true,
-            'communication': true,
-            'events': true
-          },
-          'drivermodules': {
-            'login': true
-          }
-        },
-        'password': 'wosteacher',
-        'isDeleted': false,
-        'countryCode': null,
-        'schoolId': 101,
-        'staffPin': 117698,
-        'deviceTokenId': 'fiPb2ET9tbM:APA91bEQDblbn9jr0kOC5QAVxaXz_AjDXmwErTHYCynUj9xrphwOPL4_d617B-GqNv-FTqFUO7FW69ghdPupY7rpeNy5tCrI5xsCy5Ev5SWeTpJwnfqxCJxwPjAvSL0BO20u7qwBwiHE',
-        'id': 'info@wayofschooling.com',
-        'department': '',
-        'qualificationDetails': {},
-        'address': 'navsari gujrat',
-        'profilePic': '/schoolapp/images/e540e873-d773-4f64-938e-2e5c7bed06f5.jpeg',
-        'geopoint': '26.437201,80.284257',
-        'pickPoint': 'Community Point',
-        'physicianDetails': {
-          'firstName': '',
-          'lastName': '',
-          'country': null,
-          'address': '',
-          'city': null,
-          'phone': '',
-          'state': null,
-          'fax': '',
-          'email': null
-        },
-        'requiresTransportation': true,
-        'firstName': 'Anvi',
-        'createdDate': new Date('2018-05-24'),
-        'dob': new Date('2016-08-27'),
-        'modifiedDate': new Date('2018-06-17'),
-        'experienceDetails': {},
-        'files': [],
-        'emergencyDetails': {
-          'firstName': '',
-          'lastName': '',
-          'education': null,
-          'occupation': null,
-          'address': '',
-          'dob': null,
-          'emailId': '',
-          'phoneNo': '',
-          'relation': ''
-        },
-        'position': null,
-        'userType': 'teacher',
-        'maritalStatus': 'single'
-      };
+      this.userProfileFullData = data.result;
+      this.map.lat = this.userProfileFullData.geopoint.split(',')[0];
+      this.map.lng = this.userProfileFullData.geopoint.split(',')[1];
     });
   }
 
@@ -170,11 +96,46 @@ export class ViewEditTeacherInfoComponent implements OnInit {
       lastName: new FormControl(
         { value: '', disabled: this.isEditable },
         Validators.compose([Validators.required])
-      )
+      ),
+      dob: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([Validators.required])
+      ),
+      emailField: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([Validators.required, Validators.email])
+      ),
+      gender: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([Validators.required])
+      ),
+      phone: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([Validators.required])
+      ),
+      joiningDate: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([])
+      ),
+      position: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([])
+      ),
+      address: new FormControl(
+        { value: '', disabled: this.isEditable },
+        Validators.compose([Validators.required])
+      ),
     });
   }
 
   getProfilePicUrl(url: string): string {
     return Constants.MAIN_ROOT_URL + url;
   }
+}
+
+
+class MapConfig {
+  lat: any;
+  lng: any;
+  zoom: number;
 }

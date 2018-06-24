@@ -11,9 +11,9 @@ import { LoggerService } from '../../common/services/logger.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'text/plain',
-    'Accept': 'text/plain',
-    'AuthToken': '16021987',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'AuthToken': '16021987'
   })
 };
 // const httpOptions = {

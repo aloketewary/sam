@@ -20,4 +20,5 @@ export class Constants {
     public static LOGIN_PERSISTENCE_NAME = 'userToken';
     public static USER_PROFILE_DATA = 'userProfileData';
     public static SEARCH_URL = Constants.MAIN_ROOT_URL;
+    public static MAP_ZOOM_LEVEL = 12;
 }

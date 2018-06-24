@@ -1,15 +1,15 @@
 <div class="inner-sidenav-content">
   <div class="p-b-0">
     <div fxLayout="row" fxLayoutAlign="start center" class="teacher-info-div flex-full">
-      <div fxLayout="row" fxLayoutAlign="start center" class="info-details-div flex-full m-r-10 m-t-10 m-l-10 m-b-10">
+      <div fxLayout="column" fxLayoutAlign="center start" class="info-details-div flex-full m-r-10 m-t-10 m-l-10 m-b-10">
+        <mat-toolbar color="primary">
+          <button mat-icon-button (click)="goBack()">
+            <mat-icon svgIcon="arrow-left"></mat-icon>
+          </button>
+          <span class="font-nor-20-400-i">{{'USER_INFO.TEACHER_VIEW_EDIT.PROFILE_INFO_OF_USER' | translate:lang:{userFirstName: userProfileFullData.firstName,
+            userLastName: userProfileFullData.lastName} }}</span>
+        </mat-toolbar>
         <mat-card class="info-details-card flex-full">
-          <mat-toolbar color="primary">
-            <button mat-icon-button (click)="goBack()">
-              <mat-icon svgIcon="arrow-left"></mat-icon>
-            </button>
-            <span class="font-nor-20-400-i">{{'USER_INFO.TEACHER_VIEW_EDIT.PROFILE_INFO_OF_USER' | translate:lang:{userFirstName: userProfileFullData.firstName,
-              userLastName: userProfileFullData.lastName} }}</span>
-          </mat-toolbar>
           <mat-card-content>
             <mat-vertical-stepper [linear]="isLinear" #stepper>
               <ng-template matStepperIcon="edit">
@@ -27,75 +27,229 @@
               <mat-step [stepControl]="editViewPersonalForm" class="flex-full">
                 <form [formGroup]="editViewPersonalForm" class="flex-full">
                   <ng-template matStepLabel>{{'USER_INFO.TEACHER_VIEW_EDIT.PROFILE_INFO' | translate:lang}}</ng-template>
-                  <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
-                    <div fxFlex="30%" fxLayoutAlign="center center">
-                      <img [src]="getProfilePicUrl(userProfileFullData.profilePic)" class="my-profile-image" *ngIf="selectedFile == ''">
-                      <img src="{{selectedFile}}" class="my-profile-image" *ngIf="selectedFile !== ''">
-                      <input type="file" id="profile_pic" style="display: none;" (change)="selectFile($event)">
-                      <label id="lab-camera" class="material-icons dp48 label-camera" for="profile_pic">photo_camera</label>
-                    </div>
-                    <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
-                      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
-                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
-                          <div>
-                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                  <div fxLayout="column" fxLayoutAlign="center start">
+                    <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+                      <div fxFlex="30%" fxLayoutAlign="center center">
+                        <img [src]="getProfilePicUrl(userProfileFullData.profilePic)" class="my-profile-image" *ngIf="selectedFile == ''">
+                        <img src="{{selectedFile}}" class="my-profile-image" *ngIf="selectedFile !== ''">
+                        <input type="file" id="profile_pic" style="display: none;" (change)="selectFile($event)">
+                        <label id="lab-camera" class="material-icons dp48 label-camera" for="profile_pic">photo_camera</label>
+                      </div>
+                      <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.FIRSTNAME_IS' | translate:lang}}" [formControl]="editViewPersonalForm.controls['firstName']"
+                                  [(ngModel)]="userProfileFullData.firstName" maxlength="50" required>
+                                <mat-error *ngIf="editViewPersonalForm.controls['firstName'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.FIRSTNAME_IS' | translate:lang}}
+                                  <strong> {{'COMMON.REQUIRED' | translate:lang}}</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
                           </div>
-                          <div fxFlex="90%">
-                            <mat-form-field class="input-flex-full">
-                              <input matInput placeholder="First Name" [formControl]="editViewPersonalForm.controls['firstName']" [(ngModel)]="userProfileFullData.firstName"
-                                maxlength="50" required>
-                              <mat-error *ngIf="editViewPersonalForm.controls['firstName'].hasError('required')">
-                                First Name is
-                                <strong>required</strong>
-                              </mat-error>
-                            </mat-form-field>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.LASTNAME' | translate:lang}}" [formControl]="editViewPersonalForm.controls['lastName']"
+                                  [(ngModel)]="userProfileFullData.lastName" maxlength="50" required>
+                                <mat-error *ngIf="editViewPersonalForm.controls['lastName'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.LASTNAME_IS' | translate:lang}}
+                                  <strong> {{'COMMON.REQUIRED' | translate:lang}}</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
                           </div>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
-                          <div>
-                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="calendar" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput [min]="minAllowedDateForDOB" [max]="maxAllowedDateForDOB" [(ngModel)]="userProfileFullData.dob" placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.DOB' | translate:lang}}"
+                                  [formControl]="editViewPersonalForm.controls['dob']" [matDatepicker]="picker" (focus)="picker.open()"
+                                  readonly required>
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker color="accent"></mat-datepicker>
+                                <mat-error *ngIf="editViewPersonalForm.controls['dob'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.DOB_IS' | translate:lang}}
+                                  <strong> {{'COMMON.REQUIRED' | translate:lang}}</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
                           </div>
-                          <div fxFlex="90%">
-                            <mat-form-field class="input-flex-full">
-                              <input matInput placeholder="Last Name" [formControl]="editViewPersonalForm.controls['lastName']" [(ngModel)]="userProfileFullData.lastName"
-                                maxlength="50" required>
-                              <mat-error *ngIf="editViewPersonalForm.controls['lastName'].hasError('required')">
-                                LastName is
-                                <strong>required</strong>
-                              </mat-error>
-                            </mat-form-field>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="email" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.EMAIL_FIELD' | translate:lang}}" [formControl]="editViewPersonalForm.controls['emailField']"
+                                  [(ngModel)]="userProfileFullData.emailId" maxlength="50" required>
+                                <mat-error *ngIf="editViewPersonalForm.controls['emailField'].hasError('email') && !editViewPersonalForm.controls['emailField'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.EMAIL_FIELD_IS' | translate:lang}}
+                                  <strong> {{'COMMON.INVALID' | translate:lang}}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="editViewPersonalForm.controls['emailField'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.EMAIL_FIELD_IS' | translate:lang}}
+                                  <strong> {{'COMMON.REQUIRED' | translate:lang}}</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
-                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
-                          <div>
-                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+                      <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center center">
+                        <qrcode qrdata="{{userProfileFullData.firstName}} {{userProfileFullData.lastName}}" [allowEmptyString]="true" [size]="128"
+                          [level]="'M'"></qrcode>
+                        <span *ngIf="userProfileFullData.firstName !== '' || userProfileFullData.lastName !== ''" class="font-nor-14-300 m-t-10">{{'USER_INFO.TEACHER_VIEW_EDIT.QR_CODE' | translate:lang}}</span>
+                        <span *ngIf="userProfileFullData.firstName === '' && userProfileFullData.lastName === ''" class="font-nor-14-300 m-t-10">{{'USER_INFO.TEACHER_VIEW_EDIT.QR_CODE_NOT_GENERATED' | translate:lang}}</span>
+                      </div>
+                      <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="gender-male-female" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <span class="font-nor-14-400 m-r-15">{{'USER_INFO.TEACHER_VIEW_EDIT.GENDER' | translate:lang}}</span>
+                              <span class="smallSpace"></span>
+                              <mat-button-toggle-group color="primary" name="gender" aria-label="Gender Type" [(ngModel)]="userProfileFullData.gender"
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-button-toggle value="male">{{'USER_INFO.TEACHER_VIEW_EDIT.GENDER_MALE' | translate:lang}}</mat-button-toggle>
+                                <mat-button-toggle value="Female">{{'USER_INFO.TEACHER_VIEW_EDIT.GENDER_FEMALE' | translate:lang}}</mat-button-toggle>
+                              </mat-button-toggle-group>
+                            </div>
                           </div>
-                          <div fxFlex="90%">
-                            <mat-form-field class="input-flex-full">
-                              <input matInput placeholder="First Name" [formControl]="editViewPersonalForm.controls['firstName']" [(ngModel)]="userProfileFullData.firstName"
-                                maxlength="50" required>
-                              <mat-error *ngIf="editViewPersonalForm.controls['firstName'].hasError('required')">
-                                First Name is
-                                <strong>required</strong>
-                              </mat-error>
-                            </mat-form-field>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="human-male-female" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <span class="font-nor-14-400 m-r-15">{{'USER_INFO.TEACHER_VIEW_EDIT.MARITAL_STATUS' | translate:lang}}</span>
+                              <span class="smallSpace"></span>
+                              <mat-button-toggle-group color="primary" name="marital" aria-label="Marital Status" [(ngModel)]="userProfileFullData.maritalStatus"
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-button-toggle value="single">{{'USER_INFO.TEACHER_VIEW_EDIT.MARITAL_STATUS_SINGLE' | translate:lang}}</mat-button-toggle>
+                                <mat-button-toggle value="married">{{'USER_INFO.TEACHER_VIEW_EDIT.MARITAL_STATUS_MARRIED' | translate:lang}}</mat-button-toggle>
+                              </mat-button-toggle-group>
+                            </div>
                           </div>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
-                          <div>
-                            <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="phone" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.PHONE' | translate:lang}}" [formControl]="editViewPersonalForm.controls['phone']"
+                                  [(ngModel)]="userProfileFullData.phoneNo" maxlength="50" required>
+                                <mat-error *ngIf="editViewPersonalForm.controls['phone'].hasError('required')">
+                                  {{'USER_INFO.TEACHER_VIEW_EDIT.PHONE_IS' | translate:lang}}
+                                  <strong> {{'COMMON.REQUIRED' | translate:lang}}</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
                           </div>
-                          <div fxFlex="90%">
-                            <mat-form-field class="input-flex-full">
-                              <input matInput placeholder="Last Name" [formControl]="editViewPersonalForm.controls['lastName']" [(ngModel)]="userProfileFullData.lastName"
-                                maxlength="50" required>
-                              <mat-error *ngIf="editViewPersonalForm.controls['lastName'].hasError('required')">
-                                LastName is
-                                <strong>required</strong>
-                              </mat-error>
-                            </mat-form-field>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+                            <div>
+                              <mat-icon matSuffix svgIcon="plus-circle" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput [(ngModel)]="userProfileFullData.joiningDate" placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.JOINING_DATE' | translate:lang}}"
+                                  [formControl]="editViewPersonalForm.controls['joiningDate']" [matDatepicker]="picker2" (focus)="picker2.open()"
+                                  readonly>
+                                <mat-datepicker-toggle matSuffix [for]="picker2">
+                                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker2 color="accent"></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+                      <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full" fxFlex="25%">
+                            <div>
+                              <mat-icon matSuffix svgIcon="account-group" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.POSITION' | translate:lang}}" [formControl]="editViewPersonalForm.controls['position']"
+                                  [(ngModel)]="userProfileFullData.position" maxlength="50">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full" fxFlex="25%">
+                            <div>
+                              <mat-icon matSuffix svgIcon="account" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.DEPARTMENT' | translate:lang}}" [formControl]="editViewPersonalForm.controls['lastName']"
+                                  [(ngModel)]="userProfileFullData.department" maxlength="50" required>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full" fxFlex="50%">
+                            <div>
+                              <mat-icon matSuffix svgIcon="subway-variant" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <span class="font-nor-14-400 m-r-15">{{'USER_INFO.TEACHER_VIEW_EDIT.TRANSPORTATION' | translate:lang}}</span>
+                              <span class="smallSpace"></span>
+                              <mat-button-toggle-group color="primary" name="transportation" aria-label="Transportation Type" [(ngModel)]="userProfileFullData.pickPoint"
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-button-toggle value="At Home">{{'USER_INFO.TEACHER_VIEW_EDIT.AT_HOME' | translate:lang}}</mat-button-toggle>
+                                <mat-button-toggle value="Community Point">{{'USER_INFO.TEACHER_VIEW_EDIT.COMMUNITY_POINT' | translate:lang}}</mat-button-toggle>
+                              </mat-button-toggle-group>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+                      <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="center start" class="flex-full">
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full" fxFlex="25%">
+                            <div>
+                              <mat-icon matSuffix svgIcon="home-map-marker" color="primary"></mat-icon>
+                            </div>
+                            <div fxFlex="90%">
+                              <mat-form-field class="input-flex-full">
+                                <input matInput placeholder="{{'USER_INFO.TEACHER_VIEW_EDIT.ADDRESS' | translate:lang}}" [formControl]="editViewPersonalForm.controls['address']"
+                                  [(ngModel)]="userProfileFullData.address" required>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full" fxFlex="75%">
+                            <div fxFlex="100%">
+                              <agm-map [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" [disableDefaultUI]="true" [zoomControl]="false">
+                                <agm-marker [latitude]="map.lat" [longitude]="map.lng">
+                                  <agm-info-window>
+                                    <strong>{{userProfileFullData.address}}</strong>
+                                  </agm-info-window>
+                                </agm-marker>
+                              </agm-map>
+                            </div>
                           </div>
                         </div>
                       </div>

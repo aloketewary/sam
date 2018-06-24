@@ -22,6 +22,8 @@ export const AppRoutes: Routes = [
         children: [
             { path: '', redirectTo: 'teacherinfo', pathMatch: 'full' },
             { path: 'teacherinfo', component: TeacherInfoComponent },
+            { path: 'vieweditteacherinfo', component: ViewEditTeacherInfoComponent },
+            { path: 'vieweditteacherinfo/:maildId', component: ViewEditTeacherInfoComponent },
             { path: 'vieweditteacherinfo/:maildId/:schoolId', component: ViewEditTeacherInfoComponent }
         ]
     }

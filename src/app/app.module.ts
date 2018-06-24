@@ -23,7 +23,10 @@ import {
   MatTabsModule,
   MatSortModule,
   MatSliderModule,
-  MatStepperModule
+  MatStepperModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes';
@@ -47,6 +50,8 @@ import { TeacherInfoComponent } from './userInfo/components/teacher-info/teacher
 import { IndividualTeacherInfoComponent } from './userInfo/dialogs/individual-teacher-info/individual-teacher-info.component';
 import { ViewEditTeacherInfoComponent } from './userInfo/components/view-edit-teacher-info/view-edit-teacher-info.component';
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor';
+import { QRCodeModule } from 'angularx-qrcode';
+import { AgmCoreModule } from '@agm/core';
 // import { httpInterceptorProviders } from './auth/interceptor';
 
 const l10nConfig: L10nConfig = {
@@ -120,7 +125,16 @@ export function initL10n(l10nLoader: L10nLoader): Function {
     MatSortModule,
     MatTabsModule,
     MatSliderModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    QRCodeModule,
+    MatButtonToggleModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyCbuaQcir8TkJyypLnKesLNerpu_elhw1Q'
+    })
   ],
   entryComponents: [
     ConfirmDialogComponent,
